@@ -12,7 +12,7 @@
 # print(text('python'))
 #
 # in_text1 = lambda word: 'python' in word
-# print(in_text1('python'))
+# print(in_text1('i love a python'))
 
 
 
