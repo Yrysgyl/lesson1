@@ -14,17 +14,16 @@
 
 
 
-# fruits = {'apple': '5', 'banana': '7', 'orange': '3'}
-# fruits['banana'] += 2
+# fruits = {'apple': 5, 'banana': '7', 'orange': 3}
+# fruits['banana'] += (2)
 # print(fruits)
 
 
 
-# person = {'name': 'alica', 'age': '30', 'city': 'new york'}
+# person = {'name': 'alica', 'age': 30, 'city': 'new york'}
 # print(person.keys())
-# print(person.items())
-
-
+# print(person.values())
+# print(person['age'])
 
 
 # fruits = {'apple': '5', 'banana': '7', 'orange': '3'}
