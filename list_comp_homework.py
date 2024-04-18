@@ -1,11 +1,6 @@
 #1
-# a = [1, 2, 3]
-# b = [1,2]
-
-# for i in range (len(a)):
-#     print(a([i], b[i % len(b)]))
-# result = [x for xs in map(zip, a, b)for x in xs ]
-# print(result)
+# pairs = [(x, y) for x in range(1, 4) for y in range(1, 3)]
+# print(pairs)
 
 
 #2
@@ -20,14 +15,13 @@
 
 
 #4
-# my_str = ['The' 'quick' 'brown' 'fox' 'jumps' 'over' 'the' 'lazy' 'dog']
-# my_list = [x for x in my_str if len(x) > 3]
+# my_str = 'The quick brown fox jumps over the lazy dog'
+# my_list = [x for x in my_str.split() if len(x) > 3]
 # print(my_list)
 
 #5
-# dd = [x for x in range(1, 31)]
-# mm = [y for y in range(1,12)]
-# print(dd + mm)
+# dm = [(d,m) for d in range(1,31) for m in range(1,12)]
+# print(dm)
 
 
 #6
@@ -36,13 +30,12 @@
 
 
 #7
-# alfavit = 'abcdefghijklmnoupqrstvwxyz'
-# bukva = [x for x in alfavit]
+# bukva = [chr(ord('a') + i) for i in range(26)]
 # print(bukva)
 
 
 #8
-# num_2 = [x for x in range(1, 21) if x % 2 == 0]
+# num_2 = [x for x in range(1, 20 + 1) if x % 2 == 0]
 # print(num_2)
 
 
