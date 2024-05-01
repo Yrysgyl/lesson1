@@ -25,7 +25,7 @@
 #     elif isinstance(pet, Animal):
 #         print(pet.say())
 #
-#
+# #
 # cat = Animal('мурлычает')
 # tom = Dog('tom')
 #
@@ -34,7 +34,43 @@
 # speak(tom)
 
 
-from abc import ABC, abstractmethod
+class Animal:
+    def speak(self):
+        print('животное издает звук')
+
+
+class Dog(Animal):
+
+    def speak(self):
+        print('собака лает')
+
+
+#
+
+# class Shape:
+#     def __init__(self, area):
+#         self.area = area
+#
+#     def aread(self):
+#         return self.area
+#
+#
+# class Rectangle(Shape):
+#     def __init__(self, area, width, height):
+#         super().__init__(area)
+#         self.width = width
+#         self.height = height
+#
+#     def aread(self):
+#         return self.width * self.height
+#
+#
+#
+# squar = Rectangle(10, 6,9)
+# print(squar.aread())
+
+
+
 
 
 # class Shape(ABC):
@@ -50,47 +86,46 @@ from abc import ABC, abstractmethod
 #     def area(self):
 #         return self.width * self.height
 #
-#
-#
+
+
 # squar = Rectangle(5, 10)
 # print( squar.area())
 
 
 
-class Person:
-    def __init__(self, name):
-        self.name = name
-
-    def display_name(self):
-        return self.name
-
-
-class Employee(Person):
-    def __init__(self, name, position):
-        super().__init__(name)
-        self.position = position
-
-    def info_employee(self):
-        print(f'name: {self.name}, position: {self.position}')
-
-
-class Manager(Employee):
-    def __init__(self, name, position, department):
-        super().__init__(name, position)
-        self.department = department
-
-    def display_info(self):
-        return f"{self.name} - {self.position} (Department: {self.department})"
-
-
-# Тест кылуу
-person = Person("Айгүл")
-print(person.display_name())  # Айгүл
-
-employee = Employee("Эрмек", "Иш аткычы")
-print(employee.info_employee())  # Эрмек
-
-manager = Manager("Гулжан", "Менеджер", "HR")
-print(manager.display_info())  # Гулжан - Менеджер (Department: HR)
-
-
+# class Person:
+#     def __init__(self, name):
+#         self.name = name
+# 
+#     def display_name(self):
+#         return self.name
+# 
+# 
+# class Employee(Person):
+#     def __init__(self, name, position):
+#         super().__init__(name)
+#         self.position = position
+# 
+#     def info_employee(self):
+#         print(f'name: {self.name}, position: {self.position}')
+# 
+# 
+# class Manager(Employee):
+#     def __init__(self, name, position, department):
+#         super().__init__(name, position)
+#         self.department = department
+# 
+#     def display_info(self):
+#         return f"{self.name} - {self.position} (Department: {self.department})"
+# 
+# 
+# person = Person("Айгүл")
+# print(person.display_name())  
+# 
+# employee = Employee("Эрмек", "Иш аткычы")
+# print(employee.info_employee())  
+# 
+# manager = Manager("Гулжан", "Менеджер", "HR")
+# print(manager.display_info())  # Гулжан - Менеджер (Department: HR)
+# 
+# 
