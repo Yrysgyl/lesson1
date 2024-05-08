@@ -1,45 +1,46 @@
 #1
-# class Taxi:
-#     count_client = 0
-#     total_money = 0
-#
-#     def __init__(self, order_number, money):
-#         self.order_number = order_number
-#         self.money = money
-#         self.status = 'в ожидании'
-#         Taxi.count_client += 1
-#         Taxi.total_money += self.money
-#
-#     def change_status(self, new_status):
-#         self.status = new_status
-#
-#     @staticmethod
-#     def average_money():
-#         return Taxi.total_money // Taxi.count_client
-#
-#     @staticmethod
-#     def total_client():
-#         return Taxi.count_client
-#
-#     @staticmethod
-#     def total_salary():
-#         return Taxi.total_money
-#
-#     def display_info(self):
-#         print(f'Номер заказа: {self.order_number}\nСколько денег за за один заказ: {self.money}\nstatus: {self.status}')
-#
-#
-# client1 = Taxi(1,200)
-# client2 = Taxi(2,260)
-# client2.change_status('go')
-# client1.display_info()
-#
-# print(Taxi.total_client())
-# print(Taxi.total_salary())
-#
-# print(Taxi.average_money())
-#
-#
+class Taxi:
+    count_client = 0
+    total_money = 0
+
+    def __init__(self, order_number, money):
+        self.order_number = order_number
+        self.money = money
+        self.status = 'в ожидании'
+        Taxi.count_client += 1
+        Taxi.total_money += self.money
+
+    def change_status(self, new_status):
+        self.status = new_status
+
+    @staticmethod
+    def average_money():
+        return Taxi.total_money // Taxi.count_client
+
+    @staticmethod
+    def total_client():
+        return Taxi.count_client
+
+    @staticmethod
+    def total_salary():
+        return Taxi.total_money
+
+    def __str__(self):
+        return f'Номер заказа: {self.order_number}\nСколько денег за за один заказ: {self.money}\nstatus: {self.status}'
+
+
+client1 = Taxi(1,200)
+client2 = Taxi(2,260)
+client2.change_status('go')
+print(client1)
+print(client2)
+
+print(Taxi.total_client())
+print(Taxi.total_salary())
+
+print(Taxi.average_money())
+
+
 #2
 # class Pizza:
 #     total_order = 0
