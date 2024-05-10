@@ -131,6 +131,3 @@ book1.check_in()
 # triangle.describe()
 # print(f'Площадь треугольника {triangle.area()}, окружности {circle.area()}, прямоугольника {rectangle.area()}')
 
-
-
-
