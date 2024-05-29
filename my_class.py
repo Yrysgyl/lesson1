@@ -27,88 +27,174 @@
 """
 
 
-class Elves:
+class Hero:
     eyes_count = 2
     hand_count = 2
     legs_count = 2
 
-    def __init__(self, color_hair, name, bow_type, breed, count_arrow, sir):
-        self.color_hair = color_hair
+    def __init__(self, name, sir):
         self.name = name
-        self.bow_type = 'деревянный'
-        self.breed = breed
+        self._sir = sir
+
+    def greeting(self):
+        pass
+
+    def improve(self):
+        pass
+
+
+class Bow:
+    WOODEN = 'wooden'
+    ALUMINIUM = 'aluminium'
+    CARBON = 'carbon'
+
+
+class Arms:
+    WAND = 'палочка'
+    STAFF = 'посох'
+    CRYSTAL = 'зачарованный кристалл'
+
+
+class Element:
+    FIRE = 'fire'
+    WATER = 'water'
+    AIR = 'air'
+    EARTH = 'earth'
+
+
+class Elves(Hero):
+
+    def __init__(self, name,  sir, count_arrow):
+        super().__init__(name, sir)
         self.__count_arrow = count_arrow
-        self.__sir = sir
+        self.color_hair = 'black'
+        self.bow_type = Bow.WOODEN
+        self.breed = 'племя - "sun"'
         self.rang = 1
         self.speciality = 'лучник'
 
+    def get_sir(self):
+        return self._sir
+
+    def set_sir(self, sir):
+        self._sir = sir
+
+    def get_count_arrow(self):
+        return self.__count_arrow
+
+    def set_count_arrow(self, arrow):
+        self.__count_arrow = arrow
+
     def greeting(self):
-        return f' Приветствую вас гасподин {self.__sir}'
+        return f' Приветствую вас гасподин {self._sir}'
 
     def improve(self):
-        if self.rang == 5:
-            self.speciality = 'снайпер'
-            return self.speciality
-        else:
-            return self.speciality
+        if self.rang < 5:
+            self.rang += 1
 
-    def change_arrow(self, arrow):
-        self.__count_arrow = arrow
+        elif self.rang == 5:
+            self.speciality = 'снайпер'
+            self.bow_type = Bow.ALUMINIUM
+            return f' вы стали - {self.speciality}, ваш тип лука - {self.bow_type}, ваш ранг - {self.rang}'
+        return self.speciality
+
+    def add(self, new_count_arrow):
+        self.__count_arrow += new_count_arrow
+        return self.__count_arrow
+
+    def decrease(self, count_arrow):
+        self.__count_arrow -= count_arrow
         return self.__count_arrow
 
     def __str__(self):
         return (f'цвет волос - {self.color_hair}, имя - {self.name}, тип лука - {self.bow_type}, племя - {self.breed}, '
-                f'количество лука - {self.__count_arrow}, имя гасподина - {self.__sir}, ранг - {self.rang}, специальность - {self.speciality}')
+                f'количество лука - {self.__count_arrow}, имя гасподина - {self._sir}, ранг - {self.rang}, специальность - {self.speciality}')
 
 
-# elf_1 = Elves('black', 'iris', 'деревянный', 'bugu', 15, 'sirius')
-# print(elf_1.greeting())
-# print(elf_1.change_arrow(45))
-# print(elf_1.improve())
-# print(elf_1)
+elf_1 = Elves('irina', 'selena', 20)
+print(elf_1)
+print(elf_1.greeting())
+print(elf_1.add(9))
+print(elf_1.decrease(4))
+print(elf_1.improve())
+print(elf_1.improve())
+print(elf_1.improve())
+print(elf_1.improve())
+print(elf_1.improve())
+elf_1.set_sir('samara')
+print(elf_1.get_sir())
+elf_1.set_count_arrow(15)
+print(elf_1.get_count_arrow())
+print(elf_1)
 
-class Magic:
-    count_eyes = 2
-    count_hands = 2
-    count_legs = 2
 
-    def __init__(self, name_magic, squad, element, weapon, count_mana, sir_mag, rang):
-        self.name_magic = name_magic
+
+class Magic(Hero):
+
+    def __init__(self, name, sir,   squad):
+        super().__init__(name, sir)
         self.squad = squad
-        self.element = element
+        self.element = Element.FIRE
+        self.__weapon = Arms.WAND
+        self.count_mana = 20
+        self.rang = 1
+        self.speciality = 'mag'
+
+    def get_sir(self):
+        return self._sir
+
+    def set_sir(self, sir):
+        self._sir = sir
+
+    def get_weapon(self):
+        return self.__weapon
+
+    def set_weapon(self, weapon):
         self.__weapon = weapon
-        self.count_mana = count_mana
-        self.__sir_mag = sir_mag
-        self.rang_mag = 1
-        self.spec_mag = 'mag'
 
     def greeting(self):
-        return f' {self.name_magic} приветсвует своего господина {self.__sir_mag}'
+        return f' {self.name} приветсвует своего господина {self._sir}'
 
     def improve(self):
-        if self.rang_mag == 5:
-            self.spec_mag = 'arhimag'
-            return self.spec_mag
-        else:
-            return self.spec_mag
+        if self.rang < 5:
+            self.rang += 1
+        elif self.rang == 5:
+            self.speciality = 'arhimag'
+            self.__weapon = Arms.STAFF
+            return f'максимальный уровень {self.rang}, он теперь {self.speciality}, оружие - {self.__weapon}'
+        return f'уровень ранг {self.rang}'
 
-    def change_mana(self,new_mana_count):
-        self.count_mana = new_mana_count
+    def add(self, new_mana_count):
+        self.count_mana += new_mana_count
+        return self.count_mana
+
+    def decrease(self, new_mana_count):
+        self.count_mana -= new_mana_count
         return self.count_mana
 
     def __str__(self):
-        return (f'имя волшебника - {self.name_magic},'
-                f'отряд - {self.squad}, '
-                f'стихия - {self.element}, '
-                f'оружие - {self.__weapon}, '
-                f'количество мпны - {self.count_mana}, '
-                f'имя гасподина - {self.__sir_mag}, '
-                f'ранг - {self.rang_mag}, '
-                f'специальность волшебника - {self.spec_mag}')
+        return (f'имя волшебника - {self.name},'
+                f'\nотряд - {self.squad}, '
+                f'\nстихия - {self.element}, '
+                f'\nоружие - {self.__weapon}, '
+                f'\nколичество маны - {self.count_mana}, '
+                f'\nимя гасподина - {self._sir}, '
+                f'\nранг - {self.rang}, '
+                f'\nспециальность волшебника - {self.speciality}')
 
 
-mag1 = Magic('lia', 4, 'water', 'посох', 20, 'andreas', 1)
-print(mag1)
-print(mag1.greeting())
-print(mag1.improve())
-print(mag1.change_mana(60))
+mag1 = Magic('lia',  'andreas', 'wizard')
+# print(mag1)
+# print(mag1.greeting())
+# print(mag1.improve())
+# print(mag1.improve())
+# print(mag1.improve())
+# print(mag1.improve())
+# print(mag1.improve())
+# print(mag1.add(50))
+# print(mag1.decrease(30))
+# print(mag1)
+# mag1.set_sir('tiran')
+# print(mag1.get_sir())
+# mag1.set_weapon(Arms.CRYSTAL)
+# print(mag1.get_weapon())
