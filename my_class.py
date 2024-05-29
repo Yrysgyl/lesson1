@@ -42,6 +42,12 @@ class Hero:
     def improve(self):
         pass
 
+    def add(self):
+        pass
+
+    def decrease(self):
+        pass
+
 
 class Bow:
     WOODEN = 'wooden'
